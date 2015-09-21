@@ -2,7 +2,7 @@ use Mix.Config
 
 config :perseid, Perseid.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "perseid.herokuapp.com", port: 443],
+  url: [host: "#{System.get_env("HEROKU_APP_NAME")}.herokuapp.com", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/manifest.json"
 
