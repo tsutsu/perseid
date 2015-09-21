@@ -1,12 +1,18 @@
 {
   "name":"perseid",
-  "scripts":{},
+  "scripts":{
+    "postdeploy": "mix ecto.create"
+  },
   "env":{
     "SECRET_KEY_BASE":{
-      "required":true
+      "generator": "mix phoenix.gen.secret"
     }
   },
   "addons":[
     "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {"url": "https://github.com/HashNuke/heroku-buildpack-elixir.git"},
+    {"url": "https://github.com/gjaldon/heroku-buildpack-phoenix-static.git"}
   ]
 }
